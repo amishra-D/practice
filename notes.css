@@ -1,0 +1,227 @@
+body, html {
+    background-color: black;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.side {
+    top:20px;
+    left:20px;
+    position: fixed;
+    width: 40px;
+    height: auto;
+}
+
+.fl {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+    padding-left: 80px;
+    margin-bottom: 50px;
+}
+
+.fl p {
+    margin-left:13px;
+    color: white;
+    font-family: 'Duru Sans', sans-serif;
+    font-size: 5rem;
+    text-align: left;
+}
+
+.but {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px 0;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.but button {
+    border-radius: 33px;
+    text-align: center;
+    font-size: 2rem;
+    min-width: 120px;
+    max-width: 50%;
+    width: auto;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: #0C0C0C;
+    font-family: 'Duru Sans', sans-serif;
+    color: white;
+    border: solid 2px white;
+    opacity: 0.43;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.but button:active {
+    opacity: 1;
+    background-color: white;
+    color: black;
+}
+
+.All {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.len {
+    font-size: 1.5rem;
+    background-color: #4d4a4a;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px 50px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.grid-item {
+    display: flex;
+    flex-direction: row;
+    min-width: 200px;
+    max-width: 400px;
+    justify-content: space-around;
+    background-color: #0C0C0C;
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 50px;
+    font-family: 'Dela Gothic One', sans-serif;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.content-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.toit {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 7px;
+}
+
+.toxt {
+    font-family: 'Days One', sans-serif;
+    font-size: 0.9rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: box;
+    box-orient: vertical;
+    line-clamp: 3;
+}
+#ad{
+position:fixed;
+bottom:30px;
+right:20px;
+}
+#ad img{
+    width:50px;
+    height:auto;
+    border-radius: 50px;
+}
+@media (max-width: 780px) {
+    .fl {
+        padding-left: 40px;
+    }
+
+    .fl p {
+        font-size: 4rem;
+    }
+
+    .but {
+        width: 90%;
+        max-width: 500px;
+    }
+
+    .but button {
+        font-size: 1.5rem;
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .grid-item {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .side {
+        width: 30px;
+    }
+
+    .fl {
+        margin-left: 20px;
+        padding-left: 20px;
+    }
+
+    .fl p {
+        font-size: 3rem;
+    }
+
+    .but {
+        gap: 10px;
+        justify-content: flex-start;
+    }
+
+    .but button {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .len {
+        font-size: 0.7rem;
+        width: 20px;
+        height: 20px;
+        padding: 2px;
+    }
+
+    .grid-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .grid-item {
+        font-size: 1rem;
+    }
+}
