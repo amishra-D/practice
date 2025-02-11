@@ -289,7 +289,9 @@ right:20px;
         height: 20px;
         padding: 2px;
     }
-
+#hf2 button{
+    font-size:0.7rem;
+}
     .grid-container {
         display: flex;
         flex-direction: column;
