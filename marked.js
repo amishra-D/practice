@@ -5,33 +5,28 @@ const add = document.querySelector("#ad");
 const popup = document.getElementById("pop");
 const close = document.getElementById("close");
 const del = document.getElementById("delete");
-const pin = document.getElementById("pin");
+const unpin = document.getElementById("unpin");
 const open = document.getElementById("open");
-const mar = document.querySelector(".IMP");
-const al = document.querySelector(".All");
-const le = document.querySelector(".len");
 function popvis(val){
     popup.style.visibility = val ? "visible":"hidden";
 }
-
+const mar = document.querySelector(".IMP");
+const al = document.querySelector(".All");
+const le = document.querySelector(".len");
 al.addEventListener("click",function(){
     window.location='notes.html';
 });
 mar.addEventListener("click",function(){
     window.location='marked.html';
 });
-al.style.backgroundColor="white";
-al.style.color="black";
-le.style.opacity="1";
-le.style.backgroundColor="white";
-le.style.color="black";
-le.style.border="1px solid black";
+mar.style.backgroundColor="white";
+    mar.style.color="black";
 if (container) {
     container.innerHTML = "";
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    leng.textContent = notes.length;
+    let storednotes= JSON.parse(localStorage.getItem("storednotes")) || [];
+    leng.textContent = storednotes.length;
 
-    if (notes.length == 0) {
+    if (storednotes.length == 0) {
         container.style.display = 'flex';
         container.style.width = "100%";
         container.textContent = 'NO NOTES ADDED YET';
@@ -42,7 +37,7 @@ if (container) {
         container.style.fontSize = '40px';
     }
 
-    notes.forEach((note, index) => {
+    storednotes.forEach((storednote, storedindex) => {
         let newItem = document.createElement('div');
         newItem.classList.add('grid-item');
 
@@ -54,11 +49,11 @@ if (container) {
 
         let titleContainer = document.createElement('div');
         titleContainer.classList.add('toit');
-        titleContainer.textContent = note.title;
+        titleContainer.textContent = storednote.title;
 
         let textContainer = document.createElement('div');
         textContainer.classList.add('toxt');
-        textContainer.textContent = note.text;
+        textContainer.textContent = storednote.text;
 
         contentContainer.appendChild(titleContainer);
         contentContainer.appendChild(textContainer);
@@ -82,11 +77,11 @@ if (container) {
         newItem.appendChild(flexContainer);
         container.appendChild(newItem);
         newItem.addEventListener("click", function () {
-            localStorage.setItem("selectedNote", JSON.stringify(note));
+            localStorage.setItem("selectedNote", JSON.stringify(storednote));
             window.location.href = "addnote.html";
         });
         open.addEventListener("click", function () {
-            localStorage.setItem("selectedNote", JSON.stringify(note));
+            localStorage.setItem("selectedNote", JSON.stringify(storednote));
             window.location.href = "addnote.html";
         });
         buttonContainer.addEventListener("click", function (event) {
@@ -95,23 +90,18 @@ if (container) {
             
 
             del.addEventListener("click", function () {
-                notes.splice(index, 1);
-                localStorage.setItem("notes", JSON.stringify(notes));
-                let storednotes = JSON.parse(localStorage.getItem("storednotes")) || [];
-                storednotes = storednotes.filter(storedNote => storedNote.title !== note.title || storedNote.text !== note.text);
+                storednotes.splice(storedindex, 1);
                 localStorage.setItem("storednotes", JSON.stringify(storednotes));
+                let notes = JSON.parse(localStorage.getItem("notes")) || [];
+                notes=notes.filter(Note =>Note.title !== storednote.title || Note.text !== storednote.text);
+                localStorage.setItem("notes", JSON.stringify(notes));
                 window.location.reload();
             });
 
-            pin.addEventListener("click", function () {
-                let storednotes = JSON.parse(localStorage.getItem("storednotes")) || [];
-                let alreadyPinned = storednotes.some(storedNote => storedNote.title === note.title && storedNote.text === note.text);
-                if(alreadyPinned){
-                   alert("The note is already pinned")
-                }if (!alreadyPinned) {
-                    storednotes.push(note);
-                    localStorage.setItem("storednotes", JSON.stringify(storednotes));
-                }
+            unpin.addEventListener("click", function () {
+                storednotes.splice(storedindex, 1);
+                localStorage.setItem("storednotes", JSON.stringify(storednotes));
+                window.location.reload();
             });
         });
     });
