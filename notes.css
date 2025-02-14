@@ -71,13 +71,6 @@ body, html {
     background-color: rgb(229, 221, 221);
     color: #0C0C0C;
 }
-.side {
-    top:20px;
-    left:20px;
-    position: fixed;
-    width: 40px;
-    height: auto;
-}
 
 .fl {
     display: flex;

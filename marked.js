@@ -24,12 +24,13 @@ mar.style.backgroundColor="white";
 if (container) {
     container.innerHTML = "";
     let storednotes= JSON.parse(localStorage.getItem("storednotes")) || [];
-    leng.textContent = storednotes.length;
+    let notes= JSON.parse(localStorage.getItem("notes")) || [];
+    leng.textContent = notes.length;
 
     if (storednotes.length == 0) {
         container.style.display = 'flex';
         container.style.width = "100%";
-        container.textContent = 'NO NOTES ADDED YET';
+        container.textContent = 'NO NOTES PINNED YET';
         container.style.color = "white";
         container.style.alignItems = "center";
         container.style.justifyContent = "center";

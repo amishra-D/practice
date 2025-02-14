@@ -10,6 +10,7 @@ const open = document.getElementById("open");
 const mar = document.querySelector(".IMP");
 const al = document.querySelector(".All");
 const le = document.querySelector(".len");
+const sidebar = document.querySelector("#side");
 function popvis(val){
     popup.style.visibility = val ? "visible":"hidden";
 }
