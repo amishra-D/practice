@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>addnotes</title>
+    <link rel="stylesheet" href="addlist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Duru+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="im">
+            <img src="assets\arrow_back.png" onclick="window.location.href='notes.html';"id="back">
+            <img src="assets\delete (2).png" id="delete">
+            <img src="assets\Upload.png" id="save">
+        </div>
+        <div class="all">
+        <div class="page">
+        <input type="text" id="titleInput" placeholder="ADD A TITLE">
+        <p id="words">0 words</p>
+    </div>
+    <div id="flexb">
+        <div id="one">
+    <button id="tickButton"></button>
+    <textarea id="listInput" placeholder="Type your text here..."></textarea>
+</div>
+</div>
+<button id="addi">Add Item</button>
+<div id="done">
+    <p id="listdone" placeholder="Type your text here..."></p>
+</div>
+</div>
+<script module src="lists.js"></script>
+</body>
+</html>

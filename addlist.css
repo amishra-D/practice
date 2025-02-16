@@ -1,0 +1,148 @@
+body, html {
+    background-color: #F6ECC9;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.im {
+    position: relative;
+    width: 100vw;
+    height: fit-content;
+    margin-bottom: 40px;
+}
+
+.im img {
+    min-width: 25px;
+    max-width: 35px;
+    height: auto;
+    background-color: #BDB6A0;
+    border-radius: 33px;
+    padding: 4px;
+}
+
+#back {
+    position: absolute;
+    top: 0%;
+    left: 2%;
+}
+
+#save {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+}
+
+#delete {
+    position: absolute;
+    top: 0%;
+    right: 100px;
+}
+#flexb{
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3px;
+    margin-bottom: 20px;
+}
+#flexb textarea{
+    width: 80%;
+    margin-left:14%;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6ECC9;
+    border: 0;
+    font-size: 1rem;
+    outline: none;
+    white-space: pre-wrap;
+    resize: none;
+    padding: 10px;
+    min-height: 30px;
+    overflow-y: auto;
+}
+#one{
+    display: flex;
+    flex-direction: row;
+}
+.all {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex: 1;
+    height: 100%;
+}
+
+.page {
+    margin-left:30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+}
+
+#titleInput {
+    width: 50%;
+    font-size: 3rem;
+    padding: 12px 20px;
+    font-family: 'Duru Sans', sans-serif;
+    background-color: #F6ECC9;
+    border: 0;
+    color: black;
+    outline: none;
+}
+
+#words {
+    font-size: medium;
+    font-family: 'Duru Sans', sans-serif;
+    color: black;
+    font-size: 1.5rem;
+    margin-right: 9%;
+}
+
+#textInput {
+    width: 80%;
+    margin-left:14%;
+    flex-grow: 1;
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6ECC9;
+    border: 0;
+    font-size: 1.5rem;
+    outline: none;
+    white-space: pre-wrap;
+    resize: none;
+    padding: 10px;
+    min-height: 150px;
+    overflow-y: auto;
+}
+@media(max-width:480px){
+    #words{
+        font-size: 1rem;
+        margin-right: 13%;
+    }
+    #titleInput{
+        font-size: 1.2rem;
+    }
+    #textInput{
+        font-size: 1rem;
+    }
+    .im img {
+        min-width: 20px;
+        max-width: 25px;
+        height: auto;
+        background-color: #BDB6A0;
+        border-radius: 33px;
+        padding: 4px;
+    } 
+    #delete{
+        right:70px;
+    }
+    #save{
+right:20px;
+    }
+}
