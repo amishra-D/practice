@@ -13,29 +13,27 @@ const le = document.querySelector(".len");
 const sidbut = document.querySelector("#side-toggle-btn");
 const sidebar = document.querySelector("#side");
 const page = document.querySelector(".page");
-const lis=document.querySelectorAll("li")
-const currentPath = window.location.pathname;
-const currentFile = currentPath.split('/').pop();
+const lis = document.querySelectorAll("li");
+
 let isOpen = false;
-console.log(lis);
+let bol=false;
 function toggleSidebar() {
     isOpen = !isOpen;
     sidebar.classList.toggle("open", isOpen);
     page.classList.toggle("shifted", isOpen);
     sidbut.classList.toggle("hidden", isOpen);
-   if(currentFile==="notes.html" && isOpen){
-    lis[1].style.backgroundColor="red";
-   }
-   if(currentFile==="lists.html" && isOpen){
-    lis[2].style.backgroundColor="red";
-   }
-   if(currentFile==="calculator.html" && isOpen){
-    lis[3].style.backgroundColor="red";
-   }
-   if(currentFile==="whiteboard.html" && isOpen){
-    lis[4].style.backgroundColor="red";
-   }
-   
+
+    const fileMap = {
+        "notes.html": 1,
+        "lists.html": 2,
+        "calculator.html": 3,
+        "whiteboard.html": 4
+    };
+
+    lis.forEach(li => li.style.backgroundColor = "");
+    if (fileMap[window.location.pathname.split('/').pop()]) {
+        lis[fileMap[window.location.pathname.split('/').pop()]].style.backgroundColor = "red";
+    }
 }
 
 sidbut.addEventListener("click", (event) => {
@@ -48,125 +46,126 @@ document.body.addEventListener("click", (event) => {
         toggleSidebar();
     }
 });
-function popvis(val){
-    popup.style.visibility = val ? "visible":"hidden";
+
+function togglePopup(visible) {
+    popup.style.visibility = visible ? "visible" : "hidden";
 }
 
-al.addEventListener("click",function(){
-    window.location='notes.html';
+document.body.addEventListener("click", () => togglePopup(false));
+close.addEventListener("click", () => togglePopup(false));
+
+al.addEventListener("click", () => window.location = 'notes.html');
+mar.addEventListener("click", () => window.location = 'marked.html');
+
+[al, le].forEach(el => {
+    el.style.backgroundColor = "white";
+    el.style.color = "black";
+    el.style.border = "1px solid black";
+    el.style.opacity = "1";
 });
-mar.addEventListener("click",function(){
-    window.location='marked.html';
-});
-al.style.backgroundColor="white";
-al.style.color="black";
-le.style.opacity="1";
-le.style.backgroundColor="white";
-le.style.color="black";
-le.style.border="1px solid black";
+
 if (container) {
     container.innerHTML = "";
     let notes = JSON.parse(localStorage.getItem("notes")) || [];
     leng.textContent = notes.length;
 
-    if (notes.length == 0) {
-        container.style.display = 'flex';
-        container.style.width = "100%";
+    if (!notes.length) {
+        Object.assign(container.style, {
+            display: 'flex',
+            width: "100%",
+            color: "white",
+            alignItems: "center",
+            justifyContent: "center",
+            fontFamily: 'Franklin Gothic, sans-serif',
+            fontSize: '40px'
+        });
         container.textContent = 'NO NOTES ADDED YET';
-        container.style.color = "white";
-        container.style.alignItems = "center";
-        container.style.justifyContent = "center";
-        container.style.fontFamily = 'Franklin Gothic, sans serif';
-        container.style.fontSize = '40px';
     }
 
-    notes.forEach((note, index) => {
-        let newItem = document.createElement('div');
-        newItem.classList.add('grid-item');
+    notes.forEach((note, index) => createNoteElement(note, index));
+} 
 
-        let flexContainer = document.createElement('div');
-        flexContainer.classList.add('flex-container');
-
-        let contentContainer = document.createElement('div');
-        contentContainer.classList.add('content-container');
-
-        let titleContainer = document.createElement('div');
-        titleContainer.classList.add('toit');
-        titleContainer.textContent = note.title;
-
-        let textContainer = document.createElement('div');
-        textContainer.classList.add('toxt');
-        textContainer.textContent = note.text;
-
-        contentContainer.appendChild(titleContainer);
-        contentContainer.appendChild(textContainer);
-
-        let buttonContainer = document.createElement('div');
-        buttonContainer.classList.add('button-container');
-
-        let but = document.createElement('img');
-        but.src = "assets/more_vert.png";
-        but.classList.add('btn');
-
-        buttonContainer.appendChild(but);
-
-        flexContainer.appendChild(contentContainer);
-        flexContainer.appendChild(buttonContainer);
-
-        let randomColor = colors[Math.floor(Math.random() * colors.length)];
-        newItem.style.backgroundColor = randomColor;
-        newItem.style.color = "white";
-
-        newItem.appendChild(flexContainer);
-        container.appendChild(newItem);
-        newItem.addEventListener("click", function () {
-            localStorage.setItem("selectedNote", JSON.stringify(note));
-            window.location.href = "addnote.html";
-        });
-        open.addEventListener("click", function () {
-            localStorage.setItem("selectedNote", JSON.stringify(note));
-            window.location.href = "addnote.html";
-        });
-        buttonContainer.addEventListener("click", function (event) {
-            event.stopPropagation();
-            popvis(true);
-            
-
-            del.addEventListener("click", function () {
-                notes.splice(index, 1);
-                localStorage.setItem("notes", JSON.stringify(notes));
-                let storednotes = JSON.parse(localStorage.getItem("storednotes")) || [];
-                storednotes = storednotes.filter(storedNote => storedNote.title !== note.title || storedNote.text !== note.text);
-                localStorage.setItem("storednotes", JSON.stringify(storednotes));
-                window.location.reload();
-            });
-
-            pin.addEventListener("click", function () {
-                let storednotes = JSON.parse(localStorage.getItem("storednotes")) || [];
-                let alreadyPinned = storednotes.some(storedNote => storedNote.title === note.title && storedNote.text === note.text);
-                if(alreadyPinned){
-                   alert("The note is already pinned")
-                }if (!alreadyPinned) {
-                    storednotes.push(note);
-                    localStorage.setItem("storednotes", JSON.stringify(storednotes));
-                }
-            });
-        });
-    });
-document.body.addEventListener("click",(event)=>{
-    popvis(false);
+function createNoteElement(note, index) {
     
-});
-    close.addEventListener("click", (e) => {
-        popvis(false);
+
+    let newItem = document.createElement('div');
+    newItem.classList.add('grid-item');
+    if (index === 0) {
+        newItem.classList.add('large-grid-item');
+    }
+    newItem.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    newItem.style.color = "white";
+
+    let flexContainer = document.createElement('div');
+    flexContainer.classList.add('flex-container');
+
+    let contentContainer = document.createElement('div');
+    contentContainer.classList.add('content-container');
+
+    let titleContainer = document.createElement('div');
+    titleContainer.classList.add('toit');
+    titleContainer.textContent = note.title;
+
+    let textContainer = document.createElement('div');
+    textContainer.classList.add('toxt');
+    textContainer.textContent = note.text;
+
+    contentContainer.append(titleContainer, textContainer);
+
+    let buttonContainer = document.createElement('div');
+    buttonContainer.classList.add('button-container');
+
+    let but = document.createElement('img');
+    but.src = "assets/more_vert.png";
+    but.classList.add('btn');
+    buttonContainer.appendChild(but);
+
+    flexContainer.append(contentContainer, buttonContainer);
+    newItem.appendChild(flexContainer);
+    container.appendChild(newItem);
+
+    newItem.addEventListener("click", () => {
+        localStorage.setItem("selectedNote", JSON.stringify(note));
+        window.location.href = "addnote.html";
     });
 
-    console.log(localStorage.getItem("notes"));
-    console.log(localStorage.getItem("storednotes"));
-} else {
-    console.error("Grid container not found!");
+    buttonContainer.addEventListener("click", (event) => {
+        event.stopPropagation();
+        togglePopup(true);
+
+        del.onclick = () => deleteNote(index);
+        pin.onclick = () => pinNote(note);
+    });
+
+    open.addEventListener("click", () => {
+        localStorage.setItem("selectedNote", JSON.stringify(note));
+        window.location.href = "addnote.html";
+    });
 }
-add.addEventListener("click", function () {
+
+function deleteNote(index) {
+    let notes = JSON.parse(localStorage.getItem("notes")) || [];
+    let storedNotes = JSON.parse(localStorage.getItem("storednotes")) || [];
+
+    let removedNote = notes.splice(index, 1)[0];
+    storedNotes = storedNotes.filter(n => n.title !== removedNote.title || n.text !== removedNote.text);
+
+    localStorage.setItem("notes", JSON.stringify(notes));
+    localStorage.setItem("storednotes", JSON.stringify(storedNotes));
+    window.location.reload();
+}
+
+function pinNote(note) {
+    let storedNotes = JSON.parse(localStorage.getItem("storednotes")) || [];
+    if (storedNotes.some(n => n.title === note.title && n.text === note.text)) {
+        alert("The note is already pinned");
+        return;
+    }
+    storedNotes.push(note);
+    localStorage.setItem("storednotes", JSON.stringify(storedNotes));
+}
+
+add.addEventListener("click", () => {
     localStorage.setItem("selectedNote", null);
     window.location.href = "addnote.html";
 });

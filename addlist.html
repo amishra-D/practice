@@ -12,26 +12,38 @@
 </head>
 <body>
     <div class="im">
-            <img src="assets\arrow_back.png" onclick="window.location.href='notes.html';"id="back">
+            <img src="assets\arrow_back.png" onclick="window.location.href='lists.html';"id="back">
             <img src="assets\delete (2).png" id="delete">
             <img src="assets\Upload.png" id="save">
         </div>
         <div class="all">
         <div class="page">
         <input type="text" id="titleInput" placeholder="ADD A TITLE">
-        <p id="words">0 words</p>
     </div>
-    <div id="flexb">
-        <div id="one">
-    <button id="tickButton"></button>
-    <textarea id="listInput" placeholder="Type your text here..."></textarea>
+    <div id="flexb" class="flexb">
+        <div id="one" class="one">
+    <button id="tickButton" class="tickButton"></button>
+    <textarea id="listInput" placeholder="Type your text here..." class="listInput"></textarea>
+    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M6 6L18 18M6 18L18 6" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
 </div>
 </div>
-<button id="addi">Add Item</button>
-<div id="done">
-    <p id="listdone" placeholder="Type your text here..."></p>
+<button id="addi" class="addi">
+    <svg class="rotate" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M12 4v16m8-8H4" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <p>Add Item</p>
+</button>
+<div id="done" class="done">
+    <div class="do" id="do">
+    <p id="listdone" class="listdone"></p>
+    <svg class="cross" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="white">
+        <path d="M6 6L18 18M6 18L18 6" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
 </div>
 </div>
-<script module src="lists.js"></script>
+</div>
+<script module src="addlists.js"></script>
 </body>
 </html>

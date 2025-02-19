@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="periodsLower">Periods (Lower):</label>
+<input type="number" id="periodsLower" value="8"><br><br>
+
+<label for="periodsUpper">Periods (Upper):</label>
+<input type="number" id="periodsUpper" value="8"><br><br>
+
+<label for="numClasses">Number of Classes:</label>
+<input type="number" id="numClasses" value="3"><br><br>
+
+<div id="classInputs">
+  <div id="class1Input">
+    <label for="sections1">Class 1 Sections (2-5):</label>
+    <input type="number" id="sections1" value="2" min="2" max="5"><br><br>
+    <label for="subjects1">Class 1 Subjects (comma-separated):</label>
+    <input type="text" id="subjects1" value="Maths, Literature, Hindi, Bengali, Games, Music, Drawing, Social Studies, Value Education, Physical Education, Grammar"><br><br>
+  </div>
+  <div id="class2Input">
+    <label for="sections2">Class 2 Sections (2-5):</label>
+    <input type="number" id="sections2" value="2" min="2" max="5"><br><br>
+    <label for="subjects2">Class 2 Subjects (comma-separated):</label>
+    <input type="text" id="subjects2" value="Maths, Literature, Hindi, Bengali, Games, Music, Drawing, Social Studies, Value Education, Physical Education, Grammar"><br><br>
+  </div>
+    <div id="class3Input">
+    <label for="sections3">Class 3 Sections (2-5):</label>
+    <input type="number" id="sections3" value="2" min="2" max="5"><br><br>
+    <label for="subjects3">Class 3 Subjects (comma-separated):</label>
+    <input type="text" id="subjects3" value="Maths, Literature, Hindi, Bengali, Games, Music, Drawing, Social Studies, Value Education, Physical Education, Grammar"><br><br>
+  </div>
+</div>
+
+<button id="generateButton">Generate Timetable</button>
+
+<div id="timetableOutput"></div>
+<script src="nigg.js"></script>
+</body>
+</html>

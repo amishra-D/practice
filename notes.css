@@ -135,7 +135,7 @@ li a{
    font-size: 20px;
 }
 li a.active{
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.69);
 }
 
 .fl {
@@ -241,6 +241,7 @@ li a.active{
     background-color: #0C0C0C;
     padding: 20px;
     font-size: 1.5rem;
+    
     border-radius: 50px;
     font-family: 'Dela Gothic One', sans-serif;
 }
@@ -251,6 +252,9 @@ li a.active{
     width: 100%;
     justify-content: space-around;
     align-items: flex-start;
+}
+.large-grid-item {
+    grid-row: span 2;
 }
 
 .content-container {
@@ -268,6 +272,7 @@ li a.active{
 }
 
 .toxt {
+    font-weight: 600;
     font-family: 'Days One', sans-serif;
     font-size: 0.9rem;
     overflow: hidden;
