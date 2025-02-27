@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whiteboard</title>
+   
+</head>
+<link rel="stylesheet" href="whiteboard.css">
+<body>
+    <canvas id="canvas"></canvas>
+    <div id="st_col">
+        <label for="colorPicker" class="circle">
+            <input type="color" id="colorPicker" class="hidden-input">
+        </label>
+    <input type="range" id="strokeWidth" min="1" max="20" value="2">
+  </div>  
+    <div id="features">
+        <div id="features_1">
+           <div id="features1_arrow">
+            <img src="assets/Mouse pointer.png" alt="">
+           </div>
+           <div id="features1_freehand" onclick="toggle()">
+            <img src="assets\Pen tool.png" alt="">
+           </div>
+           <div id="features1_text">
+            <img src="assets\text_fields.png" alt="">
+           </div>
+           <div id="features1_shapes">
+            <img src="assets\Component 1 (5).png" alt="">
+           </div>
+    </div>
+        <div id="features_2">
+           <div id="features2_undo"></div>
+           <div id="features1_redo"></div>
+    </div>
+    </div>
+    <div id="toggle_freehand">
+        <div id="toggle_freehand_pen">
+            <img src="assets\pencil-148324_1280.png" alt="">
+           </div>
+           <div id="toggle_freehand_highlighter">
+            <img src="highlighter.png" alt="">
+           </div>
+           <div id="toggle_freehand_eraser">
+            <img src="assets\eraser-152956_1280.png" alt="">
+           </div>
+    </div>
+    <script src="canvas.js"></script>
+</body>
+</html>

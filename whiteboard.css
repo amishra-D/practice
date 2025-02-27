@@ -1,0 +1,82 @@
+body,html{
+background-color:black;
+position: relative;
+}
+canvas{
+    background-color:rgb(228, 223, 223);
+}
+#st_col{
+    position:fixed;
+    display: flex;
+    top:20px;
+    left:100px;
+    flex-direction: row;
+    gap:30px;
+    justify-content: center;
+    align-items: center;
+    
+}
+.circle {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border:0;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.hidden-input {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+#features{
+    position: fixed;
+    left:5px;
+    top:150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+}
+#features img{
+    padding: 2px;
+    width:30px;
+    height:30px;
+    border-radius: 0.2rem;
+    transition: all 300ms ease;
+    
+}
+#features img:hover{
+    background-color: rgba(126, 126, 236, 0.582);
+}
+#features_1{
+    align-items: center;
+    padding:8px;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 3px;
+}
+#toggle_freehand{
+    position: fixed;
+    left:70px;
+    top:190px;
+    align-items: center;
+    border-radius: 10px;
+    padding:8px;
+    display:none;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 3px;
+    background-color: rgb(251, 251, 251);
+}
+#toggle_freehand img{
+    padding: 2px;
+    width:30px;
+    height:30px;
+    border-radius: 0.2rem;
+    transition: all 300ms ease;
+}
+#toggle_freehand img:hover{
+    background-color: rgba(126, 126, 236, 0.582);
+}
